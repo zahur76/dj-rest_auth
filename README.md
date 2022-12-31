@@ -18,6 +18,7 @@ Implementation of dj-rest-auth for DRF with simpleJWT.
 * Django Rest Framework
 * dj-rest-auth with django-allauth for registration
 * simple JWT
+* corsheaders
 
 ## Initial Set Up
 
@@ -97,6 +98,12 @@ Setting REST_USE_JWT = True will make the /drf-rest-auth/login return a bearer t
 
 Notes: The email confirmation view does not exist with dj-rest-auth so it must me redirected to the django-allauth or 
 custom template made.
+
+# Cor headers
+
+``` pip install django-cors-headers ```
+
+Add ``` corsheaders ``` headers to app and add ``` corsheaders.middleware.CorsMiddleware ``` to middleware.
 
 # Logout
 
