@@ -49,7 +49,8 @@ INSTALLED_APPS = [
 
     "dj_rest_auth",
     "rest_framework.authtoken",
-    "dj_rest_auth.registration"
+    "dj_rest_auth.registration",
+
 ]
 
 SITE_ID = 1

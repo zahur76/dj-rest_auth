@@ -5,6 +5,7 @@
 * [Initial Setup](#initial-set-up)
 * [Authentification](#authentification) 
 * [JWT](#jwt-authentication)
+* [Logout](#logout)
 
 
 ## INTRODUCTION
@@ -34,15 +35,18 @@ If registration is required following must be installed:
 
 * ```pip install django-allauth``` and add following to apps:
 
-- 'django.contrib.sites'
-- 'allauth'
-- 'allauth.account'
-- 'allauth.socialaccount'
-- 'dj_rest_auth'
-- 'rest_framework.authtoken'
-- 'dj_rest_auth.registration'
-
-- SITE_ID = 1
+``` 
+    ...
+    'django.contrib.sites'
+    'allauth'
+    'allauth.account'
+    'allauth.socialaccount'
+    'dj_rest_auth'
+    'rest_framework.authtoken'
+    'dj_rest_auth.registration'
+    ...
+    SITE_ID = 1
+```
 
 * must include allauth in main app urls to make use of allauth templates
 * dj-rest-auth registration email confirmation urls must be redirected to allauth url.
@@ -93,3 +97,8 @@ Setting REST_USE_JWT = True will make the /drf-rest-auth/login return a bearer t
 
 Notes: The email confirmation view does not exist with dj-rest-auth so it must me redirected to the django-allauth or 
 custom template made.
+
+# Logout
+
+Delete Token from client side since token is stateless
+
