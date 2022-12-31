@@ -5,12 +5,11 @@
 * [Initial Setup](#initial-set-up)
 * [Authentification](#authentification) 
 * [JWT](#jwt-authentication)
-* [Cor Headers](#cor-headers)  
-* [Registration](#registration)
+
 
 ## INTRODUCTION
 
-Backend API Development for JWT Project
+Implementation of dj-rest-auth for DRF with simpleJWT.
 
 ## TECH USED
 
@@ -19,7 +18,7 @@ Backend API Development for JWT Project
 * dj-rest-auth with django-allauth for registration
 * simple JWT
 
-## Iniital Set Up
+## Initial Set Up
 
 1. Install django rest framework : ``` pip install djangorestframework ```.
 2. Add ``` rest_framework ``` to apps.
@@ -27,7 +26,7 @@ Backend API Development for JWT Project
 Include templates and update templates in settings. Add drf-spectacular to REST_FRAMEWORK in settings.py.
 
 
-## Authentication
+## Authentification
 
 1. pip install ``` pip install dj-rest-auth ```
 
