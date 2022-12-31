@@ -28,7 +28,13 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = "DEVELOPMENT" in os.environ
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1" , "localhost"]
+
+CORS_ORIGIN_ALLOW_ALL=True
+
+CORS_ORIGIN_WHITELIST = [
+     'http://127.0.0.1:3000',
+]
 
 # Application definition
 
