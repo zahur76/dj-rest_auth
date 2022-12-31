@@ -58,7 +58,7 @@ INSTALLED_APPS = [
     "dj_rest_auth.registration",
 
     "corsheaders",
-
+    "admin_panel",
 ]
 
 SITE_ID = 1
@@ -78,16 +78,20 @@ ROOT_URLCONF = "backend.urls"
 
 REST_FRAMEWORK = {
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
-    "DEFAULT_PERMISSION_CLASSES": [
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+        
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_simplejwt.authentication.JWTAuthentication',
         'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
-    ]
+    ],
 }
 
-JWT_AUTH_COOKIE = 'backend-auth'
+JWT_AUTH_COOKIE = 'my-app-auth'
 JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
 
-REST_USE_JWT = True
+# REST_USE_JWT = True
 
 TEMPLATES = [
     {

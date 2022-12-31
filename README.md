@@ -99,6 +99,17 @@ Setting REST_USE_JWT = True will make the /drf-rest-auth/login return a bearer t
 Notes: The email confirmation view does not exist with dj-rest-auth so it must me redirected to the django-allauth or 
 custom template made.
 
+Update 
+ ```
+    REST_FRAMEWORK = {
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
+    ],
+    }
+ ```
+
 # Cor headers
 
 ``` pip install django-cors-headers ```
