@@ -9,6 +9,7 @@
 * [Access Control](#access-control)
 * [Logout](#logout)
 * [Adding Authentication](#adding-authentication)
+* [Test Links](#test-links)
 * [References](#references)
 
 
@@ -68,6 +69,8 @@ Include templates and update templates in settings to point to new template fold
         "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
     }
 ```
+
+The final swagger interface can be found [here](https://drf.hansolo.digital/docs/)
 
 ## Authentification
 
@@ -174,6 +177,14 @@ We can add more authentication types by updating our permissions:
 
 ``` permission_classes = [IsAdminUser, IsAuthenticated] ```
 
+# Test Links
+
+The following links provides a frontend interface implementing the authentification system
+detailed above when logging in.
+
+* [Frontend](https://drf.hansolo.digital/)
+
+* [swagger](https://drfapi.theflyu2.com/docs/)
 
 # References
 
