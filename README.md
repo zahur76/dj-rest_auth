@@ -1,4 +1,4 @@
-# DJANGO REST FRAMEWORK IMPLEMENTATION WITH AUTHENTICATION 
+# DJANGO REST FRAMEWORK WORKFLOW FOR IMPLEMENTATING WITH AUTHENTICATION 
 
 ## TABLE OF CONTENT 
 * [Introduction](#introduction)
@@ -6,6 +6,7 @@
 * [Initial Setup](#initial-set-up)
 * [Authentification](#authentification) 
 * [JWT](#jwt-authentication)
+* [Access Control](#access-control)
 * [Logout](#logout)
 * [Adding Authentication](#adding-authentication)
 
@@ -116,7 +117,9 @@ Update
     }
  ```
 
-# Cor headers
+# Access Control
+
+Access Control is implemented using django cors headers package:
 
 ``` pip install django-cors-headers ```
 
