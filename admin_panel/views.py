@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework import generics
 from rest_framework.response import Response
-from .serializers import UserSerializer
+from .serializers import UserSerializer, TestSerializer
 
 
 # Create your views here.
@@ -25,8 +25,5 @@ class GetUser(generics.ListAPIView):
 
 class TestView(generics.ListAPIView):
 
-    serializer_class = [NotImplemented]
-
-    def get_queryset(self):
-        return Response(status=200)
-
+    serializer_class = TestSerializer
+    queryset = User.objects.all()
