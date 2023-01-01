@@ -167,7 +167,7 @@ Delete Token from local storage client side and limit the token lifespan.
 
 # Adding Authentication
 
-With the above setup incoporating authentification into views can be done by adding the permisson class.
+With the above setup incorporating authentification into views can be done by adding the permisson class.
     ``` permission_classes = [IsAuthenticated] ``` 
 
 For example, let's add the above permission class to the GetUser view:
