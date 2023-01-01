@@ -171,7 +171,26 @@ With the above setup adding authentification to views can be done by adding
     ``` permission_classes = [IsAuthenticated] ``` 
 to views.
 
-If we were to inspect our endpoint using swagger, it will be seen that we now require a token to utilize the endpoint.
+For example, let's add the above permission class to the GetUser view:
+
+```
+    class GetUser(generics.ListAPIView):
+
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        """
+        view to return current user
+        """
+        user_ = self.request.user.username
+        return self.queryset.filter(username=user_)
+
+```
+
+If we were to inspect our ```admin_panel/get_user/``` endpoint using [swagger](https://drfapi.theflyu2.com/docs/), it will be seen that we now require a token to utilize the endpoint.
 
 We can add more authentication types by updating our permissions:
 
