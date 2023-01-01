@@ -38,7 +38,7 @@ With more Django developers moving away from using Django frontend and implement
         ...
     ]
 ```
-3. Install drf-spectacular to document endpoints and add ```drf_spectacular ``` apps and update urls. 
+3. Install drf-spectacular to document endpoints and then add ```drf_spectacular ``` apps and update urls. 
 
 ```
     INSTALLED_APPS = [
