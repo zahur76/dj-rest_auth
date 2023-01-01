@@ -15,7 +15,7 @@
 
 ## INTRODUCTION
 
-With more and more Django developers moving away from using Django frontend and implementing React with Django Rest Framework, this repo highlights the main procedures involved in implementing such a stack with Token authentication using simpleJWT.
+With more Django developers moving away from using Django frontend and implementing React with Django Rest Framework, this repo highlights the main procedures involved in implementing such a stack using Token authentication.
 
 ## TECH USED
 
@@ -107,7 +107,7 @@ At this stage we are using dj-rest-framework default athentification system whic
 
 ## JWT Authentication
 
-JsonWebToken authentication implemented using simple jwt as per document [here](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/)
+JsonWebToken authentication implemented using simple jwt as per document located [here](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/)
 
 1. ``` pip install djangorestframework-simplejwt ```
 2. update REST_AUTH in settings.py by adding ```rest_framework_simplejwt.authentication.JWTAuthentication ```
@@ -125,7 +125,7 @@ JsonWebToken authentication implemented using simple jwt as per document [here](
         ]
     ```
 
-At this stage with have created the login token endpoints which will return token, and refresh tokent.
+At this stage with have created the login token endpoints which will return token, and refresh token.
 
 4. Customise cookie headers as follows:
 
@@ -139,9 +139,9 @@ At this stage with have created the login token endpoints which will return toke
         }
 ```
 
-Setting REST_USE_JWT = True will make the /drf-rest-auth/login return a bearer token is so required. My prefernce is to set to False and use the ```api/token``` endpoint.
+Setting REST_USE_JWT = True will make the /drf-rest-auth/login return a bearer token is so required. My preference is to set it to False and use the ```api/token``` endpoint.
 
-Notes: The email confirmation view does not exist with dj-rest-auth so it must me overwritten to use django-allauth confirm mail or a custom template.
+Notes: The email confirmation template does not exist with dj-rest-auth so it must me overwritten to use django-allauth confirm mail or a custom template.
 
 Update REST_FRAMEWORK settings:
  ```
@@ -167,7 +167,7 @@ Delete Token from local storage client side and limit the token lifespan.
 
 # Adding Authentication
 
-With the above setup incorporating authentification into views can be done by adding the permisson class.
+With the above setup, incorporating authentification into views can be done by adding the permission class.
     ``` permission_classes = [IsAuthenticated] ``` 
 
 For example, let's add the above permission class to the GetUser view:
