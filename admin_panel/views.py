@@ -22,6 +22,9 @@ class GetUser(generics.ListAPIView):
 
 
 class TestView(generics.ListAPIView):
+    """
+    Test view to illustrate permissions
+    """
 
     permission_classes = [IsAdminUser, IsAuthenticated]
     serializer_class = TestSerializer
