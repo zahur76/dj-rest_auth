@@ -70,7 +70,7 @@ Include templates and update templates in settings to point to new template fold
     }
 ```
 
-The final swagger interface can be found [here](https://drf.hansolo.digital/docs/)
+The final swagger interface can be found [here](https://drfapi.theflyu2.com/docs/)
 
 ## Authentification
 
