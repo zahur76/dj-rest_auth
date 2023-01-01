@@ -9,6 +9,7 @@
 * [Access Control](#access-control)
 * [Logout](#logout)
 * [Adding Authentication](#adding-authentication)
+* [References](#references)
 
 
 ## INTRODUCTION
@@ -89,7 +90,7 @@ JsonWebToken authentication implemented using simple jwt as per document [here](
     ]
     ```
 
-At this stage with have created the login token endpoints which will return token, and refresh token when using this endpoint.
+At this stage with have created the login token endpoints which will return token, and refresh tokent.
 
 4. Customise cookie headers as follows:
 
@@ -140,7 +141,11 @@ We can even add more authentication types by updating our permissions:
 ``` permission_classes = [IsAdminUser, IsAuthenticated] ```
 
 
+# References
 
+* https://www.django-rest-framework.org/
+* https://dj-rest-auth.readthedocs.io/en/latest/
+* https://django-rest-framework-simplejwt.readthedocs.io/en/latest/
 
 
 
