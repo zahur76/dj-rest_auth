@@ -61,7 +61,7 @@ With more and more Django developers moving away from using Django frontend and 
     ),
 ```
 
-Include templates and update templates in settings. Add drf-spectacular to REST_FRAMEWORK in settings.py.
+Include templates and update templates in settings to point to new template folder. Add drf-spectacular to REST_FRAMEWORK in settings.py.
 
 ```
     REST_FRAMEWORK = {
