@@ -107,7 +107,7 @@ At this stage we are using dj-rest-framework default athentification system whic
 
 ## JWT Authentication
 
-JsonWebToken authentication implemented using simple jwt as per document located [here](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/)
+JsonWebToken authentication is implemented using simple jwt as per document located [here](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/)
 
 1. ``` pip install djangorestframework-simplejwt ```
 2. update REST_AUTH in settings.py by adding ```rest_framework_simplejwt.authentication.JWTAuthentication ```
