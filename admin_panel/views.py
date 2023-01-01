@@ -11,7 +11,6 @@ class GetUser(generics.ListAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
-    # permission_classes = [IsAdminUser, IsAuthenticated]
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
@@ -19,11 +18,11 @@ class GetUser(generics.ListAPIView):
         view to return current user
         """
         user_ = self.request.user.username
-        print(user_)
         return self.queryset.filter(username=user_)
 
 
 class TestView(generics.ListAPIView):
 
+    permission_classes = [IsAdminUser, IsAuthenticated]
     serializer_class = TestSerializer
     queryset = User.objects.all()
