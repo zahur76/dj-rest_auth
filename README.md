@@ -164,11 +164,13 @@ Delete Token from local storage client side and limit the token lifespan.
 
 # Adding Authentication
 
-With the above setup adding authentification to views can be done by adding ``` permission_classes = [IsAuthenticated] ``` to views.
+With the above setup adding authentification to views can be done by adding 
+    ``` permission_classes = [IsAuthenticated] ``` 
+to views.
 
 If we were to inspect our endpoint using swagger, it will be seen that we now require a token to utilize the endpoint.
 
-We can even add more authentication types by updating our permissions:
+We can add more authentication types by updating our permissions:
 
 ``` permission_classes = [IsAdminUser, IsAuthenticated] ```
 
