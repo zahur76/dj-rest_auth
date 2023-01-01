@@ -29,12 +29,44 @@ With more and more Django developers moving away from using Django frontend and 
 
 1. Install django rest framework : ``` pip install djangorestframework ```.
 2. Add ``` rest_framework ``` to apps.
-3. install drf-spectacular to document endpoints and add ```drf_spectacular ``` apps and update urls. 
-Include templates and update templates in settings. Add drf-spectacular to REST_FRAMEWORK in settings.py.
+
 ```
-REST_FRAMEWORK = {
-    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
-}
+    INSTALLED_APPS = [
+        ...
+        "rest_framework",
+        ...
+    ]
+```
+3. Install drf-spectacular to document endpoints and add ```drf_spectacular ``` apps and update urls. 
+
+```
+    INSTALLED_APPS = [
+        ...
+        "drf_spectacular",
+        ...
+    ]
+```
+
+```
+    from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
+```
+
+
+```
+     path("docs/",
+        SpectacularSwaggerView.as_view(
+            template_name="swagger-ui.html", url_name="schema"
+        ),
+        name="swagger-ui",
+    ),
+```
+
+Include templates and update templates in settings. Add drf-spectacular to REST_FRAMEWORK in settings.py.
+
+```
+    REST_FRAMEWORK = {
+        "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+    }
 ```
 
 ## Authentification
@@ -78,16 +110,16 @@ JsonWebToken authentication implemented using simple jwt as per document [here](
 2. update REST_AUTH in settings.py by adding ```rest_framework_simplejwt.authentication.JWTAuthentication ```
 3. update urls in main.app urls with:
     ```
-    from rest_framework_simplejwt.views import (
-    TokenObtainPairView,
-        TokenRefreshView,
-    )
-    urlpatterns = [
-        ...
-        path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-        path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-        ...
-    ]
+        from rest_framework_simplejwt.views import (
+        TokenObtainPairView,
+            TokenRefreshView,
+        )
+        urlpatterns = [
+            ...
+            path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+            path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+            ...
+        ]
     ```
 
 At this stage with have created the login token endpoints which will return token, and refresh tokent.
@@ -98,17 +130,17 @@ At this stage with have created the login token endpoints which will return toke
 ```JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'```
 
 ```
-SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
-    }
+    SIMPLE_JWT = {
+        'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
+        'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+        }
 ```
 
 Setting REST_USE_JWT = True will make the /drf-rest-auth/login return a bearer token is so required. My prefernce is to set to False and use the ```api/token``` endpoint.
 
 Notes: The email confirmation view does not exist with dj-rest-auth so it must me overwritten to use django-allauth confirm mail or a custom template.
 
-Update 
+Update REST_FRAMEWORK settings:
  ```
     REST_FRAMEWORK = {
     ...
