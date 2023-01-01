@@ -1,4 +1,5 @@
-# JWT DEMO
+# DJANGO REST FRAMEWORK IMPLEMENTATION WITH AUTHENTICATION 
+
 ## TABLE OF CONTENT 
 * [Introduction](#introduction)
 * [Techs Used](#tech-used)
@@ -6,11 +7,12 @@
 * [Authentification](#authentification) 
 * [JWT](#jwt-authentication)
 * [Logout](#logout)
+* [Adding Authentication](#adding-authentication)
 
 
 ## INTRODUCTION
 
-Implementation of dj-rest-auth for DRF with simpleJWT.
+With more and more Django developers moving away from using Django frontend and implementing React with Django Rest Framework, this repo highlights the main procedures involved in implementing such a stack with Token authentication using simpleJWT.
 
 ## TECH USED
 
@@ -18,6 +20,7 @@ Implementation of dj-rest-auth for DRF with simpleJWT.
 * Django Rest Framework
 * dj-rest-auth with django-allauth for registration
 * simple JWT
+* swagger for API documentation
 * corsheaders
 
 ## Initial Set Up
@@ -32,7 +35,7 @@ Include templates and update templates in settings. Add drf-spectacular to REST_
 
 1. pip install ``` pip install dj-rest-auth ```
 
-If registration is required following must be installed:
+If registration is required following we must install django-allauth:
 
 * ```pip install django-allauth``` and add following to apps:
 
@@ -49,15 +52,16 @@ If registration is required following must be installed:
     SITE_ID = 1
 ```
 
-* must include allauth in main app urls to make use of allauth templates
-* dj-rest-auth registration email confirmation urls must be redirected to allauth url.
+* allauth is included in main app urls ``` path("accounts/", include("allauth.urls")), ``` to make use of allauth templates
+
+* dj-rest-auth registration email confirmation urls must be overwrite to make use of allauth's email confirmation.
 
 2. update urls in main app to include dj-rest-frameworj urls.
 
 ``` path('dj-rest-auth/', include('dj_rest_auth.urls')), ```
 ``` path('dj-rest-auth/registration/', include('dj_rest_auth.registration.urls')) ```
 
-At this stage we are using dj-rest-framework default athentification system which returns a token when hitting the login endpoint.
+At this stage we are using dj-rest-framework default athentification system which returns a token when using the login endpoint.
 
 
 ## JWT Authentication
@@ -80,7 +84,7 @@ JsonWebToken authentication implemented using simple jwt as per document [here](
     ]
     ```
 
-At this stage with have created the login token endpoints which will return token, and refresh token when hitting this endpoint.
+At this stage with have created the login token endpoints which will return token, and refresh token when postin to this endpoint.
 
 4. Customise cookie headers as follows:
 
@@ -94,10 +98,9 @@ SIMPLE_JWT = {
     }
 ```
 
-Setting REST_USE_JWT = True will make the /drf-rest-auth/login return a bearer token is so required.
+Setting REST_USE_JWT = True will make the /drf-rest-auth/login return a bearer token is so required. 
 
-Notes: The email confirmation view does not exist with dj-rest-auth so it must me redirected to the django-allauth or 
-custom template made.
+Notes: The email confirmation view does not exist with dj-rest-auth so it must me overwritten to use django-allauth confirm mail or a custom template.
 
 Update 
  ```
@@ -105,7 +108,6 @@ Update
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-        'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
     ],
     }
  ```
@@ -118,5 +120,17 @@ Add ``` corsheaders ``` headers to app and add ``` corsheaders.middleware.CorsMi
 
 # Logout
 
-Delete Token from client side since token is stateless
+Delete Token from local storage client side
+
+# Adding Authentication
+
+With the above setup adding authentification to views can be done by adding:
+
+``` permission_classes = [IsAuthenticated] ```
+
+If we were to inspect our endpoint using swagger, it will be seen that we now require a token for authentication.
+
+
+
+
 
